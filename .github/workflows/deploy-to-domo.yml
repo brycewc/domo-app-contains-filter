@@ -1,0 +1,19 @@
+name: Deploy to Domo
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Domo
+        uses: DomoApps/domoapps-publish-action@v2.0.0
+        with:
+          domo-token: ${{ secrets.DOMO_ACCESS_TOKEN }}
+          domo-instance: https://domo.domo.com
+          build-command: npm run build
+          working-directory: ./build

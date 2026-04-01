@@ -1,10 +1,11 @@
-import path from 'path';
-import fs from 'fs';
-import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
+import fs from 'fs';
+import path from 'path';
+import { defineConfig } from 'vite';
 import checker from 'vite-plugin-checker';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import tailwindcss from '@tailwindcss/vite';
+
 import publicManifest from './public/manifest.json';
 import { setupRyuuProxy } from './setupProxy';
 
@@ -65,7 +66,10 @@ export default defineConfig(({ command }: ConfigInput) => {
               fs.renameSync(tmpManifestPath, buildManifestPath);
             }
           } catch (error) {
-            console.warn('Could not replace "manifest.json" in build folder:', error);
+            console.warn(
+              'Could not replace "manifest.json" in build folder:',
+              error,
+            );
           }
         },
       },

@@ -1,7 +1,6 @@
 # Ignore artifacts:
 build
 coverage
-.storybook
 
 # Ignore all HTML files:
 **/*.html
