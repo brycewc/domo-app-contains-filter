@@ -11,9 +11,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy to Domo
-        uses: DomoApps/domoapps-publish-action@v2.0.0
+        uses: DomoApps/domoapps-publish-action@v3.0.0
         with:
           domo-token: ${{ secrets.DOMO_ACCESS_TOKEN }}
           domo-instance: https://domo.domo.com
           build-command: npm run build
-          working-directory: ./build
+          # Build runs at repo root (working-directory defaults to ".");
+          # publish-dir points at Vite's output folder, relative to it.
+          publish-dir: ./build
