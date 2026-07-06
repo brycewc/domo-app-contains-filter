@@ -9,8 +9,8 @@
     "preview": "yarn build && vite preview",
     "format": "prettier --ignore-unknown --write \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
     "lint": "eslint --fix",
-    "prestart": "da apply-manifest",
-    "prebuild": "da apply-manifest",
+    "prestart": "if command -v da >/dev/null 2>&1; then da apply-manifest; else echo 'da CLI not found - skipping apply-manifest'; fi",
+    "prebuild": "if command -v da >/dev/null 2>&1; then da apply-manifest; else echo 'da CLI not found - skipping apply-manifest, using public/manifest.json'; fi",
     "upload": "yarn build && cd build && domo publish && cd .."
   },
   "dependencies": {
